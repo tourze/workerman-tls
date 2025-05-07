@@ -1,0 +1,40 @@
+<?php
+
+namespace Tourze\Workerman\TLS\Enum;
+
+/**
+ * TLS扩展类型枚举
+ */
+enum ExtensionType: int
+{
+    case SERVER_NAME = 0x0000;
+    case MAX_FRAGMENT_LENGTH = 0x0001;
+    case CLIENT_CERTIFICATE_URL = 0x0002;
+    case TRUSTED_CA_KEYS = 0x0003;
+    case TRUNCATED_HMAC = 0x0004;
+    case STATUS_REQUEST = 0x0005;
+    case SUPPORTED_GROUPS = 0x000A;
+    case SIGNATURE_ALGORITHMS = 0x000D;
+    case USE_SRTP = 0x000E;
+    case HEARTBEAT = 0x000F;
+    case APPLICATION_LAYER_PROTOCOL_NEGOTIATION = 0x0010;
+    case SIGNED_CERTIFICATE_TIMESTAMP = 0x0012;
+    case CLIENT_CERTIFICATE_TYPE = 0x0013;
+    case SERVER_CERTIFICATE_TYPE = 0x0014;
+    case PADDING = 0x0015;
+    case ENCRYPT_THEN_MAC = 0x0016;
+    case EXTENDED_MASTER_SECRET = 0x0017;
+    case TOKEN_BINDING = 0x0018;
+    case CACHED_INFO = 0x0019;
+    case SESSION_TICKET = 0x0023;
+    case PRE_SHARED_KEY = 0x0029;
+    case EARLY_DATA = 0x002A;
+    case SUPPORTED_VERSIONS = 0x002B;
+    case COOKIE = 0x002C;
+    case PSK_KEY_EXCHANGE_MODES = 0x002D;
+    case CERTIFICATE_AUTHORITIES = 0x002F;
+    case OID_FILTERS = 0x0030;
+    case POST_HANDSHAKE_AUTH = 0x0031;
+    case SIGNATURE_ALGORITHMS_CERT = 0x0032;
+    case KEY_SHARE = 0x0033;
+}

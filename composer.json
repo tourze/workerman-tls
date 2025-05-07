@@ -1,0 +1,25 @@
+{
+  "name": "tourze/workerman-tls",
+  "description": "TLS protocol in Workerman",
+  "license": "MIT",
+  "require": {
+    "php": "^8.1",
+    "ext-openssl": "*",
+    "tourze/workerman-psr-logger": "0.0.*",
+    "workerman/workerman": "^5.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tourze\\Workerman\\TLS\\": "src"
+    }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^10.0"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tourze\\Workerman\\TLS\\Tests\\": "tests"
+    }
+  }
+}
