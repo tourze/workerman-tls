@@ -4,9 +4,10 @@
 
 ## 核心包
 
-### 1. tls-common
+### 1. tls-common ✅
 
 **职责**：
+
 - 定义TLS协议的基础数据结构和常量
 - 提供通用的工具函数和异常类
 - 定义协议接口和抽象类
@@ -17,9 +18,10 @@
 
 **依赖**：无外部依赖
 
-### 2. tls-crypto-symmetric
+### 2. tls-crypto-symmetric ✅
 
 **职责**：
+
 - 提供对称加密算法实现
 - AES-GCM、AES-CBC实现
 - ChaCha20-Poly1305实现
@@ -29,9 +31,10 @@
 
 **依赖**：tls-common
 
-### 3. tls-crypto-asymmetric
+### 3. tls-crypto-asymmetric ✅
 
 **职责**：
+
 - 提供非对称加密算法实现
 - RSA加密和签名
 - ECDSA实现
@@ -41,9 +44,10 @@
 
 **依赖**：tls-common
 
-### 4. tls-crypto-hash
+### 4. tls-crypto-hash ✅
 
 **职责**：
+
 - 哈希函数实现
 - SHA-256, SHA-384, SHA-512实现
 - MD5和旧版哈希函数(仅兼容)
@@ -53,9 +57,10 @@
 
 **依赖**：tls-common
 
-### 5. tls-crypto-random
+### 5. tls-crypto-random ✅
 
 **职责**：
+
 - 密码学安全随机数生成
 - 实现CSPRNG
 - 熵池管理
@@ -64,9 +69,10 @@
 
 **依赖**：tls-common
 
-### 6. tls-crypto-curves
+### 6. tls-crypto-curves ✅
 
 **职责**：
+
 - 椭圆曲线实现
 - P-256, P-384, P-521曲线支持
 - X25519, X448曲线支持
@@ -76,9 +82,10 @@
 
 **依赖**：tls-common, tls-crypto-random
 
-### 7. tls-crypto-keyexchange
+### 7. tls-crypto-keyexchange ✅
 
 **职责**：
+
 - 密钥交换算法实现
 - ECDHE密钥交换
 - DHE密钥交换
@@ -88,9 +95,10 @@
 
 **依赖**：tls-common, tls-crypto-asymmetric, tls-crypto-curves, tls-crypto-random
 
-### 8. tls-record
+### 8. tls-record ✅
 
 **职责**：
+
 - 实现TLS记录层协议
 - 处理数据的分片和重组
 - 应用加密和压缩
@@ -104,9 +112,10 @@
 
 **依赖**：tls-common, tls-crypto-symmetric, tls-crypto-hash
 
-### 9. tls-handshake-messages
+### 9. tls-handshake-messages ✅
 
 **职责**：
+
 - 实现TLS握手协议消息结构
 - 定义消息类型和格式
 - 序列化和反序列化握手消息
@@ -115,9 +124,10 @@
 
 **依赖**：tls-common
 
-### 10. tls-handshake-flow
+### 10. tls-handshake-flow ✅
 
 **职责**：
+
 - 实现TLS握手状态机
 - 握手过程控制
 - 握手阶段管理
@@ -127,9 +137,10 @@
 
 **依赖**：tls-common, tls-handshake-messages, tls-record
 
-### 11. tls-handshake-negotiation
+### 11. tls-handshake-negotiation ✅
 
 **职责**：
+
 - 加密套件协商
 - 密钥交换算法协商
 - 版本协商
@@ -140,9 +151,10 @@
 
 **依赖**：tls-common, tls-handshake-messages, tls-crypto-keyexchange
 
-### 12. tls-alert
+### 12. tls-alert ❌
 
 **职责**：
+
 - 实现TLS警告协议
 - 错误处理和通知
 - 定义和处理各种警告和错误状态
@@ -158,9 +170,10 @@
 
 ## 功能包
 
-### 13. tls-x509-core
+### 13. tls-x509-core ✅
 
 **职责**：
+
 - X.509证书的基础结构定义
 - 证书解析和序列化（PEM、DER格式转换）
 - 证书字段和扩展的访问接口
@@ -169,9 +182,10 @@
 
 **依赖**：tls-common, tls-crypto-asymmetric, tls-crypto-hash
 
-### 14. tls-x509-validation
+### 14. tls-x509-validation ✅
 
 **职责**：
+
 - 证书链验证逻辑
 - 证书有效期检查
 - 信任锚管理
@@ -182,9 +196,10 @@
 
 **依赖**：tls-common, tls-crypto-asymmetric, tls-x509-core
 
-### 15. tls-cert-revocation
+### 15. tls-cert-revocation ✅
 
 **职责**：
+
 - CRL（证书撤销列表）处理
 - OCSP（在线证书状态协议）客户端实现
 - OCSP装订(Stapling)支持
@@ -194,9 +209,10 @@
 
 **依赖**：tls-common, tls-crypto-asymmetric, tls-x509-core
 
-### 16. tls-cert-store
+### 16. tls-cert-store ✅
 
 **职责**：
+
 - 证书和密钥的存储管理
 - 证书库访问接口
 - 支持不同的存储后端（文件系统、数据库等）
@@ -206,9 +222,10 @@
 
 **依赖**：tls-common, tls-x509-core
 
-### 17. tls-cert-extensions
+### 17. tls-cert-extensions ❌
 
 **职责**：
+
 - 扩展Certificate Transparency支持
 - 多域名证书(SAN)处理
 - 通配符证书支持
@@ -218,9 +235,10 @@
 
 **依赖**：tls-common, tls-crypto-asymmetric, tls-x509-core
 
-### 18. tls-cert-generation
+### 18. tls-cert-generation ✅
 
 **职责**：
+
 - 自签名证书生成
 - 证书签名请求(CSR)创建和处理
 - 简易CA功能
@@ -229,9 +247,10 @@
 
 **依赖**：tls-common, tls-crypto-asymmetric, tls-crypto-random, tls-x509-core
 
-### 19. tls-session
+### 19. tls-session ❌
 
 **职责**：
+
 - 会话管理和维护
 - 会话缓存实现
 - 会话票据(Session Tickets)处理
@@ -247,9 +266,10 @@
 
 **依赖**：tls-common, tls-crypto-symmetric, tls-crypto-hash, tls-handshake-flow
 
-### 20. tls-extension-naming
+### 20. tls-extension-naming ❌
 
 **职责**：
+
 - SNI (Server Name Indication)实现
 - 证书选择机制
 - 虚拟主机支持
@@ -257,9 +277,10 @@
 
 **依赖**：tls-common, tls-handshake-messages
 
-### 21. tls-extension-alpn
+### 21. tls-extension-alpn ❌
 
 **职责**：
+
 - ALPN (Application-Layer Protocol Negotiation)实现
 - 协议优先级处理
 - 协议列表管理
@@ -267,9 +288,10 @@
 
 **依赖**：tls-common, tls-handshake-messages
 
-### 22. tls-extension-secure
+### 22. tls-extension-secure ❌
 
 **职责**：
+
 - Extended Master Secret扩展实现
 - Renegotiation Info扩展
 - 签名算法扩展
@@ -279,9 +301,10 @@
 
 **依赖**：tls-common, tls-handshake-messages, tls-crypto-asymmetric
 
-### 23. tls-extension-performance
+### 23. tls-extension-performance ❌
 
 **职责**：
+
 - 最大片段长度扩展
 - 压缩证书扩展
 - 记录大小限制扩展
@@ -290,9 +313,10 @@
 
 **依赖**：tls-common, tls-handshake-messages
 
-### 24. tls-extension-tls13
+### 24. tls-extension-tls13 ❌
 
 **职责**：
+
 - Key Share扩展(TLS 1.3)
 - Pre-Shared Key扩展(TLS 1.3)
 - Cookie扩展
@@ -301,9 +325,10 @@
 
 **依赖**：tls-common, tls-handshake-messages, tls-crypto-keyexchange
 
-### 25. tls-client-core
+### 25. tls-client-core ❌
 
 **职责**：
+
 - TLS客户端核心实现
 - 客户端状态机管理
 - 基础API定义
@@ -312,9 +337,10 @@
 
 **依赖**：tls-common, tls-record, tls-handshake-flow, tls-handshake-negotiation, tls-alert
 
-### 26. tls-client-auth
+### 26. tls-client-auth ❌
 
 **职责**：
+
 - 客户端证书管理
 - 客户端身份验证实现
 - 证书选择逻辑
@@ -323,9 +349,10 @@
 
 **依赖**：tls-common, tls-crypto-asymmetric, tls-client-core, tls-x509-core
 
-### 27. tls-client-verify
+### 27. tls-client-verify ❌
 
 **职责**：
+
 - 服务器证书验证
 - 证书链构建和验证
 - 主机名验证
@@ -334,9 +361,10 @@
 
 **依赖**：tls-common, tls-client-core, tls-x509-validation, tls-cert-revocation, tls-extension-naming
 
-### 28. tls-client-session
+### 28. tls-client-session ❌
 
 **职责**：
+
 - 客户端会话管理
 - 会话恢复和复用
 - 会话票据处理
@@ -345,9 +373,10 @@
 
 **依赖**：tls-common, tls-client-core, tls-session
 
-### 29. tls-client-config
+### 29. tls-client-config ❌
 
 **职责**：
+
 - 客户端配置管理
 - 加密套件优先级设置
 - 协议版本选择
@@ -357,9 +386,10 @@
 
 **依赖**：tls-common, tls-client-core
 
-### 30. tls-server-core
+### 30. tls-server-core ❌
 
 **职责**：
+
 - TLS服务端核心实现
 - 服务器状态机管理
 - 基本服务器API
@@ -368,9 +398,10 @@
 
 **依赖**：tls-common, tls-record, tls-handshake-flow, tls-handshake-negotiation, tls-alert
 
-### 31. tls-server-auth
+### 31. tls-server-auth ❌
 
 **职责**：
+
 - 服务器证书管理
 - 证书选择逻辑(SNI支持)
 - 服务器身份验证
@@ -379,9 +410,10 @@
 
 **依赖**：tls-common, tls-crypto-asymmetric, tls-server-core, tls-x509-core, tls-cert-store, tls-extension-naming
 
-### 32. tls-server-client-auth
+### 32. tls-server-client-auth ❌
 
 **职责**：
+
 - 客户端证书请求处理
 - 客户端证书验证
 - 客户端认证策略
@@ -390,9 +422,10 @@
 
 **依赖**：tls-common, tls-server-core, tls-x509-validation, tls-cert-revocation
 
-### 33. tls-server-session
+### 33. tls-server-session ❌
 
 **职责**：
+
 - 服务器会话管理
 - 会话缓存实现
 - 会话票据生成和验证
@@ -401,9 +434,10 @@
 
 **依赖**：tls-common, tls-server-core, tls-session
 
-### 34. tls-server-config
+### 34. tls-server-config ❌
 
 **职责**：
+
 - 服务器配置管理
 - 虚拟主机配置
 - 加密套件和版本策略
@@ -414,9 +448,10 @@
 
 ## 额外功能包
 
-### 35. tls-compatibility
+### 35. tls-compatibility ❌
 
 **职责**：
+
 - 兼容性层实现
 - 支持不同TLS版本(1.0, 1.1, 1.2, 1.3)
 - 向下兼容处理机制
@@ -433,9 +468,10 @@
 
 **依赖**：tls-common, tls-handshake-flow, tls-record
 
-### 36. tls-testing
+### 36. tls-testing ❌
 
 **职责**：
+
 - 测试工具和模拟器
 - 协议一致性测试套件
 - 安全测试工具
@@ -454,9 +490,10 @@
 
 **依赖**：所有其他包
 
-### 37. tls-debug
+### 37. tls-debug ❌
 
 **职责**：
+
 - 提供TLS协议调试工具
 - 实现协议消息捕获和分析
 - 支持加密数据可视化
@@ -472,9 +509,10 @@
 
 **依赖**：所有其他包
 
-### 38. tls-pfs
+### 38. tls-pfs ❌
 
 **职责**：
+
 - 实现完美前向保密(Perfect Forward Secrecy)
 - 支持临时密钥交换
 - 管理临时密钥生命周期
@@ -487,6 +525,33 @@
 - 支持密钥材料安全销毁
 
 **依赖**：tls-common, tls-crypto-keyexchange, tls-handshake-negotiation
+
+## 集成包
+
+### 39. tls-key-format ✅
+
+**职责**：
+
+- 提供密钥和证书格式处理功能
+- PEM和DER格式转换
+- 证书处理和解析
+- 密钥处理和操作
+- 密钥对生成和管理
+- 证书链验证工具
+
+**依赖**：无专项依赖，仅使用PHP标准扩展
+
+### 40. tls-crypto-factory ✅
+
+**职责**：
+
+- 提供统一的加密组件工厂
+- 简化各类加密组件创建
+- 抽象不同加密算法的细节
+- 统一错误处理机制
+- 提供便捷的组件访问方式
+
+**依赖**：tls-crypto-symmetric, tls-crypto-asymmetric, tls-crypto-hash, tls-crypto-random, tls-crypto-curves, tls-crypto-keyexchange, tls-key-format
 
 ## 实现注意事项
 
