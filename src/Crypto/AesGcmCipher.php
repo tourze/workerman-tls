@@ -36,7 +36,7 @@ class AesGcmCipher implements CipherInterface
             // Combine IV + ciphertext + tag
             return $iv . $ciphertext . $tag;
 
-        } catch (\Exception $e) {
+        } catch  (\Throwable $e) {
             LogUtil::error('Encryption error', $e);
             throw $e;
         }
@@ -66,7 +66,7 @@ class AesGcmCipher implements CipherInterface
 
             return $plaintext;
 
-        } catch (\Exception $e) {
+        } catch  (\Throwable $e) {
             LogUtil::error('Decryption error', $e);
             throw $e;
         }

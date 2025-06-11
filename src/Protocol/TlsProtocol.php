@@ -62,7 +62,7 @@ class TlsProtocol implements ProtocolInterface
             // 在应用数据阶段,使用记录层协议处理
             return RecordLayerProtocol::input($buffer, $connection);
 
-        } catch (\Exception $e) {
+        } catch  (\Throwable $e) {
             LogUtil::error("TLS protocol error", $e);
             $connection->close();
             return 0;
@@ -95,7 +95,7 @@ class TlsProtocol implements ProtocolInterface
             // 在应用数据阶段
             return RecordLayerProtocol::decode($buffer, $connection);
 
-        } catch (\Exception $e) {
+        } catch  (\Throwable $e) {
             LogUtil::error("TLS decode error", $e);
             $connection->close();
             return '';
@@ -121,7 +121,7 @@ class TlsProtocol implements ProtocolInterface
             // 在应用数据阶段
             return RecordLayerProtocol::encode($data, $connection);
 
-        } catch (\Exception $e) {
+        } catch  (\Throwable $e) {
             LogUtil::error("TLS encode error", $e);
             $connection->close();
             return '';
@@ -178,7 +178,7 @@ class TlsProtocol implements ProtocolInterface
                     break;
             }
 
-        } catch (\Exception $e) {
+        } catch  (\Throwable $e) {
             LogUtil::error("Error handling handshake message", $e);
             $connection->close();
         }
