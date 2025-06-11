@@ -109,7 +109,7 @@ class HandshakeProtocol implements ProtocolInterface
             }
 
             return $totalLength;
-        } catch  (\Throwable $e) {
+        } catch (\Throwable $e) {
             // 握手失败,关闭连接
             LogUtil::error("Handshake failed", $e);
             $connection->close();
@@ -233,7 +233,7 @@ class HandshakeProtocol implements ProtocolInterface
             }
 
             return '';
-        } catch  (\Throwable $e) {
+        } catch (\Throwable $e) {
             // 握手失败,关闭连接
             LogUtil::error("Handshake failed", $e);
             $connection->close();

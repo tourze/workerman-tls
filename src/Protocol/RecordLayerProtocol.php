@@ -77,7 +77,7 @@ class RecordLayerProtocol implements ProtocolInterface
 
             return $totalLength;
 
-        } catch  (\Throwable $e) {
+        } catch (\Throwable $e) {
             LogUtil::error("Record layer error", $e);
             $connection->close();
             return 0;
@@ -138,7 +138,7 @@ class RecordLayerProtocol implements ProtocolInterface
                 default => throw new \Exception("Unknown content type: {$recordHeader['type']}")
             };
 
-        } catch  (\Throwable $e) {
+        } catch (\Throwable $e) {
             LogUtil::error("Record layer decode error", $e);
             $connection->close();
             return '';
@@ -198,7 +198,7 @@ class RecordLayerProtocol implements ProtocolInterface
 
             return $header . $payload;
 
-        } catch  (\Throwable $e) {
+        } catch (\Throwable $e) {
             LogUtil::error("Record layer encode error", $e);
             $connection->close();
             return '';
